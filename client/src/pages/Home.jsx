@@ -23,12 +23,16 @@ const Home = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await fetch("https://dall-e-clone-1pu2.onrender.com/api/v1/post", {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
+        setLoading(true);
+        const response = await fetch(
+          "https://dall-e-clone-1pu2.onrender.com/api/v1/post",
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
 
         if (response.ok) {
           const result = await response.json();
@@ -56,7 +60,7 @@ const Home = () => {
             item.prompt.toLowerCase().includes(searchText.toLowerCase())
         );
         setSearchedResults(searchResults);
-        console.log(searchResults)
+        console.log(searchResults);
       }, 500)
     );
   };
